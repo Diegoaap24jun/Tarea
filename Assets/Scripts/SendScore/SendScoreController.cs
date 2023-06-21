@@ -7,7 +7,8 @@ using UnityEngine.Networking;
 
 public class SendScoreController : MonoBehaviour
 {
-
+    [SerializeField]
+    private string levelname;
     public void SendScore(string username, int score, Action callback)
     {
         StartCoroutine(SendScoreRequest(username, score, callback));
@@ -17,9 +18,10 @@ public class SendScoreController : MonoBehaviour
     {
         WWWForm form = new WWWForm();
         form.AddField("username", username);
+        form.AddField("levelname", levelname);
         form.AddField("score", score);
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/progral/e1/insert_user.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/progral/e2/insert_score.php", form))
         {
             yield return www.SendWebRequest();
             if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)

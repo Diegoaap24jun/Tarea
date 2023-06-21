@@ -6,17 +6,20 @@ using UnityEngine.Networking;
 
 public class GetScoreController : MonoBehaviour
 {
-    public void GetScore(string username, Action<ScoreData> callback)
+    [SerializeField]
+    private string levelname;
+    public void GetScore(string username, Action<ScoreArrayData> callback)
     {
         StartCoroutine(GetScoreRequest(username, callback));
     }
 
-    IEnumerator GetScoreRequest(string username, Action<ScoreData> callback)
+    IEnumerator GetScoreRequest(string username, Action<ScoreArrayData> callback)
     {
         WWWForm form = new WWWForm();
         form.AddField("username", username);
+        form.AddField("levelname", levelname);
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/progral/e1/get_score.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/progral/e2/get_score.php", form))
         {
             yield return www.SendWebRequest();
             if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
@@ -25,8 +28,8 @@ public class GetScoreController : MonoBehaviour
             }
             else
             {
-                ScoreData scoreData=JsonUtility.FromJson<ScoreData>(www.downloadHandler.text);
-                callback?.Invoke(scoreData);
+                ScoreArrayData scoreArrayData =JsonUtility.FromJson<ScoreArrayData>(www.downloadHandler.text);
+                callback?.Invoke(scoreArrayData);
             }
         }
 

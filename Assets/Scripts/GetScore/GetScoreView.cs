@@ -28,9 +28,13 @@ public class GetScoreView : MonoBehaviour
     {
         controller.GetScore(nameInputField.text, OnFinishRequest);
     }
-    private void OnFinishRequest(ScoreData scoreData)
+    private void OnFinishRequest(ScoreArrayData scoreArrayData)
     {
-        scoreText.text = $"Old Score: {scoreData.score}";
+        scoreText.text = "";
+        foreach (ScoreData scoreData in scoreArrayData.data)
+        {
+            scoreText.text += $"{scoreData.score}\n";
+        }
     }
 
 }
