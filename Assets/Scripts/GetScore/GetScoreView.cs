@@ -33,7 +33,7 @@ public class GetScoreView : MonoBehaviour
         scoreText.text = "";
         foreach (ScoreData scoreData in scoreArrayData.data)
         {
-            scoreText.text += $"{scoreData.score}\n";
+            scoreText.text += $"{scoreData.puntaje}\n";
         }
     }
 

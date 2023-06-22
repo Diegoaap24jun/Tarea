@@ -14,11 +14,11 @@ public class GameController : MonoBehaviour
     private GameObject sendScoreCanvas;
 
     [SerializeField]
-    private int score;
+    private int puntaje;
 
     private static GameController instance;
 
-    public int Score { get => score;}
+    public int Score { get => puntaje; }
 
     private void Awake()
     {
@@ -33,7 +33,7 @@ public class GameController : MonoBehaviour
 
     public void IncreaseScore()
     {
-        score++;
+        puntaje++;
     }
 
     public void EndGame()

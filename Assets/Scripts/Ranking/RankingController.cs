@@ -8,15 +8,20 @@ public class RankingController : MonoBehaviour
 {
     [SerializeField]
     private RankingDataArray rankingDataArray;
-    public void GetRanking(Action<RankingDataArray> callback)
+    [SerializeField]
+    private string nombreNivel;
+    public void GetRanking(string nombre, Action<RankingDataArray> callback)
     {
-        StartCoroutine(SendRankingRequest(callback));
+        StartCoroutine(SendRankingRequest(nombre, callback));
     }
 
-    IEnumerator SendRankingRequest(Action<RankingDataArray> callback)
+    IEnumerator SendRankingRequest(string nombre, Action<RankingDataArray> callback)
     {
+        WWWForm form = new WWWForm();
+        form.AddField("nombreNivel", nombreNivel);
+        form.AddField("nombre", nombre);
 
-        using (UnityWebRequest www = UnityWebRequest.Get("http://localhost/progral/e1/get_ranking.php"))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/prograProm3/Tarea3.4Final/Tarea3_4_Ranking.php", form))
         {
             yield return www.SendWebRequest();
             if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
@@ -25,7 +30,7 @@ public class RankingController : MonoBehaviour
             }
             else
             {
-                rankingDataArray = JsonUtility.FromJson<RankingDataArray>(www.downloadHandler.text);
+                RankingDataArray rankingDataArray = JsonUtility.FromJson<RankingDataArray>(www.downloadHandler.text);
                 callback?.Invoke(rankingDataArray);
             }
         }

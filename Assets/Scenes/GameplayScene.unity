@@ -1598,6 +1598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bf23cea3c0351545ba06ea86350c03d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nombreNivel: Arequipa
 --- !u!1 &1881130467
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,7 +1631,7 @@ MonoBehaviour:
   player: {fileID: 2091020678}
   gameContainer: {fileID: 1236235157}
   sendScoreCanvas: {fileID: 275182542}
-  score: 0
+  puntaje: 0
 --- !u!4 &1881130469
 Transform:
   m_ObjectHideFlags: 0
@@ -2002,6 +2003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36e89594fc82ed43a4e49f8afb9d422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nombreNivel: Arequipa
 --- !u!1 &2091020673
 GameObject:
   m_ObjectHideFlags: 0
