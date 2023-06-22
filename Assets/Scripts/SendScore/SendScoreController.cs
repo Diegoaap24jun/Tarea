@@ -19,7 +19,7 @@ public class SendScoreController : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("nombre", nombre);
         form.AddField("nombreNivel", nombreNivel);
-        form.AddField("score", puntaje);
+        form.AddField("puntaje", puntaje);
 
         using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/prograProm3/Tarea3.4Final/Tarea3_4_InsertScore.php", form))
         {
