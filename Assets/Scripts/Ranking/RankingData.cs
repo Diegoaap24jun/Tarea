@@ -3,7 +3,7 @@ using System;
 [Serializable]
 public class RankingData
 {
-    public string nombreNivel;
-    public string nombre;
-    public int puntaje;
+    public string NombreDelNivel;
+    public string NombreDeUsuario;
+    public int Puntaje;
 }
