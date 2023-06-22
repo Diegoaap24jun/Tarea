@@ -10,7 +10,7 @@ else
 {
     $nombreNivel = $_POST["nombreNivel"];
 
-    $sql = "SELECT niveles.nombreNivel AS NombreDelNivel,usuarios_niveles.puntaje AS Puntaje,usuarios.usuario_id AS IdUsuario,usuarios.nombre AS NombreDeUsuario
+    $sql = "SELECT niveles.nombreNivel AS NombreDelNivel,usuarios_niveles.puntaje AS Puntaje,usuarios.nombre AS NombreDeUsuario
             FROM niveles
             INNER JOIN usuarios_niveles
             ON usuarios_niveles.nivel_id=niveles.nivel_id
