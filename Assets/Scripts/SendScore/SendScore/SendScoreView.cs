@@ -11,6 +11,9 @@ public class SendScoreView : MonoBehaviour
     private TextMeshProUGUI scoreText;
 
     [SerializeField]
+    private string sceneName;
+
+    [SerializeField]
     private TMP_InputField nameInputField;
 
     [SerializeField]
@@ -32,7 +35,7 @@ public class SendScoreView : MonoBehaviour
 
     private void OnFinishRequest()
     {
-        SceneManager.LoadScene("RankingScene");
+        SceneManager.LoadScene(sceneName);
     }
 
 

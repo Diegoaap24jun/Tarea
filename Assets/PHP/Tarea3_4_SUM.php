@@ -9,13 +9,15 @@ if ($mysqli->connect_error)
 }
 else
 {
-    $sql = "SELECT SUM(puntaje)
+    $sql = "SELECT SUM(puntaje) AS Suma
             FROM usuarios_niveles
-            WHERE usuarios_niveles.usuario_id=?;";
+            INNER JOIN usuarios
+            ON usuarios.usuario_id=usuarios_niveles.usuario_id
+            WHERE nombre=?;";
 
     $query = $mysqli->prepare($sql);
-    $id = $_POST["id"];
-    $query->bind_param("i", $id);
+    $nombre = $_POST["nombre"];
+    $query->bind_param("s", $nombre);
     $query->execute();
     $result = $query->get_result();
     $data = array();
